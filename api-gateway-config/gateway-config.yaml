@@ -1,0 +1,98 @@
+swagger: '2.0'
+info:
+  version: "1.0"
+  title: "Microservices Gateway"
+paths:
+  /orders:
+    get:
+      summary: "Order Service"
+      x-amazon-apigateway-integration:
+        type: http
+        uri: http://order-service-url/orders
+        httpMethod: GET
+        passthroughBehavior: when_no_match
+        responses:
+          default:
+            statusCode: "200"
+    post:
+      summary: Create a new order
+      description: Create a new order with the provided details.
+      parameters:
+        - name: orderData
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '201':
+          description: Order created successfully
+          schema:
+            $ref: '#/definitions/Order'
+  /order/{id}:
+    get:
+      summary: Get order by ID
+      description: Retrieve an order by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved order
+          schema:
+            $ref: '#/definitions/Order'
+    patch:
+      summary: Update an order by ID
+      description: Update an existing order with the given ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: updateData
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: Order updated successfully
+          schema:
+            $ref: '#/definitions/Order'
+    delete:
+      summary: Delete an order by ID
+      description: Delete an order with the specified ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Order deleted successfully
+  /customers:
+    get:
+      summary: "Customer Service"
+      x-amazon-apigateway-integration:
+        type: http
+        uri: http://customer-service-url/customers
+        httpMethod: GET
+        passthroughBehavior: when_no_match
+        responses:
+          default:
+            statusCode: "200"
+definitions:
+  Order:
+    type: object
+    properties:
+      id:
+        type: string
+      customerId:
+        type: string
+      details:
+        type: string
+      status:
+        type: string
+      products:
+        type: array

@@ -9,7 +9,7 @@ export class Order {
   customerId: string;
 
   @Column('json')
-  inventories: { inventoryId: string; quantity: IntegerType; price: Double; }[];
+  inventories: { inventoryId: string; quantity: IntegerType; }[];
 
   @Column()
   status: string;

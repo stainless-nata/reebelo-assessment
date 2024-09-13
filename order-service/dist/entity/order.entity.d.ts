@@ -1,9 +1,10 @@
+import { IntegerType } from 'typeorm';
 export declare class Order {
     id: string;
     customerId: string;
-    products: {
-        productId: string;
-        quantity: number;
+    inventories: {
+        inventoryId: string;
+        quantity: IntegerType;
     }[];
     status: string;
     trackingNumber?: string;

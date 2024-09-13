@@ -25,7 +25,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)('json'),
     __metadata("design:type", Array)
-], Order.prototype, "products", void 0);
+], Order.prototype, "inventories", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

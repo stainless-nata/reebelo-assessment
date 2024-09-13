@@ -11,7 +11,7 @@ const common_1 = require("@nestjs/common");
 const order_controller_1 = require("./order.controller");
 const order_service_1 = require("./order.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const order_entity_1 = require("./order.entity");
+const order_entity_1 = require("../entity/order.entity");
 let OrderModule = class OrderModule {
 };
 exports.OrderModule = OrderModule;
