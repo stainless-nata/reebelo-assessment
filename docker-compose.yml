@@ -1,0 +1,20 @@
+version: '3'
+services:
+  order-service:
+    build: ./order-service
+    ports:
+      - "3001:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+  customer-service:
+    build: ./customer-service
+    ports:
+      - "3002:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+  inventory-service:
+    build: ./inventory-service
+    ports:
+      - "3003:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
